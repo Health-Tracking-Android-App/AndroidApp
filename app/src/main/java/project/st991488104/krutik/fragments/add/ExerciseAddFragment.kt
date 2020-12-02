@@ -1,60 +1,61 @@
 package project.st991488104.krutik.fragments.add
 
 import android.os.Bundle
+import android.view.*
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import kotlinx.android.synthetic.main.fragment_add.*
+import kotlinx.android.synthetic.main.fragment_add.view.*
 import project.st991488104.krutik.R
+import project.st991488104.krutik.data.models.ExerciseData
+import project.st991488104.krutik.data.viewmodel.ExerciseViewModel
+import project.st991488104.krutik.fragments.SharedViewModel
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [ExerciseAddFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ExerciseAddFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private val mSharedViewModel: SharedViewModel by viewModels()
+    private val mExeViewModel: ExerciseViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_exercise_add, container, false)
+        val view = inflater.inflate(R.layout.fragment_exercise_add, container, false)
+
+        setHasOptionsMenu(true)
+
+        return view
+    }
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.add_fragment_menu, menu)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ExerciseAddFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ExerciseAddFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if(item.itemId == R.id.menu_add){
+            insertDataToDb()
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun insertDataToDb() {
+        val mTitle = title_et.text.toString()
+
+        val validation = mSharedViewModel.verifyExerciseDataFromUser(mTitle)
+        if(validation){
+            // Insert Data to Database
+            val newData = ExerciseData(
+                0,
+                mTitle
+            )
+            mExeViewModel.insertData(newData)
+            Toast.makeText(requireContext(), "Successfully added!", Toast.LENGTH_SHORT).show()
+            // Navigate Back
+            findNavController().navigate(R.id.action_exerciseAddFragment_to_exerciseListFragment)
+        }else{
+            Toast.makeText(requireContext(), "Please fill out all fields.", Toast.LENGTH_SHORT).show()
+        }
     }
 }

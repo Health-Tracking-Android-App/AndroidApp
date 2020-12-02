@@ -8,6 +8,7 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import project.st991488104.krutik.R
+import project.st991488104.krutik.data.models.ExerciseData
 import project.st991488104.krutik.data.models.Priority
 import project.st991488104.krutik.data.models.ToDoData
 
@@ -19,6 +20,12 @@ class SharedViewModel(application: Application): AndroidViewModel(application) {
 
     fun checkIfDatabaseEmpty(toDoData: List<ToDoData>){
         emptyDatabase.value = toDoData.isEmpty()
+    }
+
+    val emptyExerciseDatabase: MutableLiveData<Boolean> = MutableLiveData(false)
+
+    fun checkIfExerciseDatabaseEmpty(exerciseData: List<ExerciseData>){
+        emptyExerciseDatabase.value = exerciseData.isEmpty()
     }
 
     /** ============================= Add/Update Fragment ============================= */
@@ -43,6 +50,11 @@ class SharedViewModel(application: Application): AndroidViewModel(application) {
     fun verifyDataFromUser(title: String, description: String): Boolean {
         return !(title.isEmpty() || description.isEmpty())
     }
+
+    fun verifyExerciseDataFromUser(title: String): Boolean {
+        return !(title.isEmpty())
+    }
+
 
     fun parsePriority(priority: String): Priority {
         return when(priority){

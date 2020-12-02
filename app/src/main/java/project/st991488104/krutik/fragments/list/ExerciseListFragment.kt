@@ -1,68 +1,68 @@
 package project.st991488104.krutik.fragments.list
 
 import android.os.Bundle
+import android.view.*
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import jp.wasabeef.recyclerview.animators.SlideInUpAnimator
 import kotlinx.android.synthetic.main.fragment_exercise_list.view.*
 import project.st991488104.krutik.R
+import project.st991488104.krutik.data.viewmodel.ExerciseViewModel
+import project.st991488104.krutik.databinding.FragmentExerciseListBinding
+import project.st991488104.krutik.fragments.SharedViewModel
+import project.st991488104.krutik.fragments.list.adapter.ExerciseListAdapter
+import project.st991488104.krutik.utils.hideKeyboard
+import androidx.lifecycle.Observer
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [ExerciseListFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ExerciseListFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private val mExerciseViewModel: ExerciseViewModel by viewModels()
+    private val mSharedViewModel: SharedViewModel by viewModels()
+
+    private var _binding: FragmentExerciseListBinding? = null
+    private val binding get() = _binding!!
+
+    private val adapter: ExerciseListAdapter by lazy { ExerciseListAdapter() }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_exercise_list, container, false)
+        // Data binding
+        _binding = FragmentExerciseListBinding.inflate(inflater, container, false)
+        binding.lifecycleOwner = this
+        binding.mSharedViewModel = mSharedViewModel
 
-        view.exercisefloatingActionButton.setOnClickListener {
-            view.findNavController().navigate(R.id.action_exerciseListFragment_to_exerciseAddFragment)
+        // Setup RecyclerView
+        setupRecyclerview()
+
+        // Observe LiveData
+        mExerciseViewModel.getAllData.observe(viewLifecycleOwner, Observer { data ->
+            mSharedViewModel.checkIfExerciseDatabaseEmpty(data)
+            adapter.setData(data)
+        })
+
+        hideKeyboard(requireActivity())
+
+        return binding.root
+    }
+
+    private fun setupRecyclerview() {
+        val recyclerView = binding.exRecyclerView
+        recyclerView.adapter = adapter
+        recyclerView.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+        recyclerView.itemAnimator = SlideInUpAnimator().apply {
+            addDuration = 300
         }
-        return view
+    }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ExerciseListFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ExerciseListFragment()
-                .apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
 }

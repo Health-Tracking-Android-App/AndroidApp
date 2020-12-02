@@ -3,20 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-<!--    <data>-->
-<!--        <variable-->
-<!--            name="mSharedViewModel"-->
-<!--            type="org.st991488104.st991488104.fragments.SharedViewModel" />-->
-<!--    </data>-->
+    <data>
+        <variable
+            name="mSharedViewModel"
+            type="project.st991488104.krutik.fragments.SharedViewModel" />
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/exerciselistLayout"
+        android:id="@+id/exListLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".fragments.list.ExerciseListFragment">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/exerciserecyclerView"
+            android:id="@+id/exRecyclerView"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:clipToPadding="false"
@@ -28,13 +28,14 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/exercisefloatingActionButton"
+            android:id="@+id/exFloatingActionButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="24dp"
             android:layout_marginBottom="24dp"
             android:clickable="true"
             android:focusable="true"
+            android:navigateToExerciseAddFragment="@{true}"
             android:src="@drawable/ic_add"
             android:tint="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -44,11 +45,13 @@
             android:id="@+id/no_data_imageView"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:emptyDatabase="@{mSharedViewModel.emptyExerciseDatabase}"
             android:src="@drawable/ic_no_data"
-            app:layout_constraintBottom_toBottomOf="@+id/exerciserecyclerView"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@+id/exRecyclerView"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/exerciserecyclerView"
-            app:layout_constraintTop_toTopOf="@+id/exerciserecyclerView"
+            app:layout_constraintStart_toStartOf="@+id/exRecyclerView"
+            app:layout_constraintTop_toTopOf="@+id/exRecyclerView"
             app:layout_constraintVertical_bias="0.37" />
 
         <TextView
@@ -57,11 +60,12 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:alpha="0.5"
+            android:emptyDatabase="@{mSharedViewModel.emptyExerciseDatabase}"
             android:text="@string/no_data"
             android:textSize="16sp"
             android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/exerciserecyclerView"
+            app:layout_constraintStart_toStartOf="@+id/exRecyclerView"
             app:layout_constraintTop_toBottomOf="@+id/no_data_imageView" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
