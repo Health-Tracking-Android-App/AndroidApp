@@ -6,13 +6,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import project.st991488104.krutik.data.Database.ExerciseDatabase
+import project.st991488104.krutik.data.Database.HealthCareDatabase
 import project.st991488104.krutik.data.models.ExerciseData
 import project.st991488104.krutik.data.repository.ExerciseRepository
 
 class ExerciseViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val exerciseDao = ExerciseDatabase.getDatabase(
+    private val exerciseDao = HealthCareDatabase.getDatabase(
         application
     ).exerciseDao()
     private val repository: ExerciseRepository

@@ -9,8 +9,9 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class ToDoData(
     @PrimaryKey(autoGenerate = true)
-    var id: Int,
+    var taskId: Int,
     var title: String,
     var priority: Priority,
-    var description: String
+    var description: String,
+    var exerciseId: Int
 ): Parcelable

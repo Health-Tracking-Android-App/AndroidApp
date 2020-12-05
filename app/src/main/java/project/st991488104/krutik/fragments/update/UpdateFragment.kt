@@ -64,10 +64,11 @@ class UpdateFragment : Fragment() {
         if (validation) {
             // Update Current Item
             val updatedItem = ToDoData(
-                args.currentItem.id,
+                args.currentItem.taskId,
                 title,
                 mSharedViewModel.parsePriority(getPriority),
-                description
+                description,
+                args.currentItem.exerciseId
             )
             mToDoViewModel.updateData(updatedItem)
             Toast.makeText(requireContext(), "Successfully updated!", Toast.LENGTH_SHORT).show()

@@ -7,9 +7,12 @@ import project.st991488104.krutik.data.models.ToDoData
 
 class ToDoRepository(private val toDoDao: ToDoDao) {
 
-    val getAllData: LiveData<List<ToDoData>> = toDoDao.getAllData()
     val sortByHighPriority: LiveData<List<ToDoData>> = toDoDao.sortByHighPriority()
     val sortByLowPriority: LiveData<List<ToDoData>> = toDoDao.sortByLowPriority()
+
+    fun getAllData(exerciseId: Int): LiveData<List<ToDoData>> {
+        return toDoDao.getAllData(exerciseId)
+    }
 
     suspend fun insertData(toDoData: ToDoData){
         toDoDao.insertData(toDoData)

@@ -57,7 +57,8 @@ class AddFragment : Fragment() {
                 0,
                 mTitle,
                 mSharedViewModel.parsePriority(mPriority),
-                mDescription
+                mDescription,
+                0
             )
             mToDoViewModel.insertData(newData)
             Toast.makeText(requireContext(), "Successfully added!", Toast.LENGTH_SHORT).show()

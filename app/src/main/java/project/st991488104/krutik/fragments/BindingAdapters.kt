@@ -76,9 +76,10 @@ class BindingAdapters {
         }
 //        @BindingAdapter("android:sendDataToListFragment")
 //        @JvmStatic
-//        fun sendDataToListFragment(view: ConstraintLayout){
+//        fun sendDataToListFragment(view: ConstraintLayout, selectItem: ExerciseData ){
 //            view.setOnClickListener {
-//                    view.findNavController().navigate(R.id.action_exerciseListFragment_to_listFragment)
+//                val actionEx = ExerciseListFragmentDirections.actionExerciseListFragmentToListFragment(selectItem)
+//                view.findNavController().navigate(actionEx)
 //            }
 //        }
         @BindingAdapter("android:sendDataToUpdateFragment")

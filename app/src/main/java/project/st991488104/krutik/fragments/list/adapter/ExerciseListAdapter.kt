@@ -2,10 +2,12 @@ package project.st991488104.krutik.fragments.list.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import project.st991488104.krutik.data.models.ExerciseData
 import project.st991488104.krutik.databinding.ExerciseRowLayoutBinding
+import project.st991488104.krutik.fragments.list.ExerciseListFragmentDirections
 
 class ExerciseListAdapter : RecyclerView.Adapter<ExerciseListAdapter.MyViewHolder>() {
 
@@ -28,6 +30,8 @@ class ExerciseListAdapter : RecyclerView.Adapter<ExerciseListAdapter.MyViewHolde
         }
     }
 
+
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         return MyViewHolder.from(
             parent
@@ -39,8 +43,8 @@ class ExerciseListAdapter : RecyclerView.Adapter<ExerciseListAdapter.MyViewHolde
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val selectedItem = dataList[position]
-        holder.bind(selectedItem)
+//        val selectItem = dataList[position]
+//        holder.bind(selectItem)
     }
 
     fun setData(exerciseData: List<ExerciseData>){

@@ -7,8 +7,8 @@ import project.st991488104.krutik.data.models.ToDoData
 @Dao
 interface ToDoDao {
 
-    @Query("SELECT * FROM todo_table ORDER BY id ASC")
-    fun getAllData(): LiveData<List<ToDoData>>
+    @Query("SELECT * FROM todo_table WHERE exerciseId LIKE :exerciseId")
+    fun getAllData(exerciseId: Int): LiveData<List<ToDoData>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertData(toDoData: ToDoData)
