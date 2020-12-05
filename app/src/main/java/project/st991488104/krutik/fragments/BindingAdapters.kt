@@ -74,14 +74,14 @@ class BindingAdapters {
                 Priority.LOW -> { cardView.setCardBackgroundColor(cardView.context.getColor(R.color.green)) }
             }
         }
-//        @BindingAdapter("android:sendDataToListFragment")
-//        @JvmStatic
-//        fun sendDataToListFragment(view: ConstraintLayout, selectItem: ExerciseData ){
-//            view.setOnClickListener {
-//                val actionEx = ExerciseListFragmentDirections.actionExerciseListFragmentToListFragment(selectItem)
-//                view.findNavController().navigate(actionEx)
-//            }
-//        }
+        @BindingAdapter("android:sendDataToListFragment")
+        @JvmStatic
+        fun sendDataToListFragment(view: ConstraintLayout, selectItem: ExerciseData ){
+            view.setOnClickListener {
+                val actionEx = ExerciseListFragmentDirections.actionExerciseListFragmentToListFragment(selectItem)
+                view.findNavController().navigate(actionEx)
+            }
+        }
         @BindingAdapter("android:sendDataToUpdateFragment")
         @JvmStatic
         fun sendDataToUpdateFragment(view: ConstraintLayout, currentItem: ToDoData){

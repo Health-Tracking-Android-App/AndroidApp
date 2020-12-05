@@ -1,5 +1,6 @@
 package project.st991488104.krutik.fragments.add
 
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.*
 import android.widget.Toast
@@ -12,12 +13,14 @@ import project.st991488104.krutik.data.viewmodel.ToDoViewModel
 import project.st991488104.krutik.fragments.SharedViewModel
 import kotlinx.android.synthetic.main.fragment_add.*
 import kotlinx.android.synthetic.main.fragment_add.view.*
+import project.st991488104.krutik.fragments.PreferenceProvider
 
 class AddFragment : Fragment() {
 
+    lateinit var preferenceProvider: PreferenceProvider
+    var ExeID = 0
     private val mToDoViewModel: ToDoViewModel by viewModels()
     private val mSharedViewModel: SharedViewModel by viewModels()
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -30,6 +33,8 @@ class AddFragment : Fragment() {
 
         // Spinner Item Selected Listener
         view.priorities_spinner.onItemSelectedListener = mSharedViewModel.listener
+
+        preferenceProvider = PreferenceProvider(container!!.context)
 
         return view
     }
@@ -49,6 +54,7 @@ class AddFragment : Fragment() {
         val mTitle = title_et.text.toString()
         val mPriority = priorities_spinner.selectedItem.toString()
         val mDescription = description_et.text.toString()
+        ExeID = preferenceProvider.getString("ExerciseID","")!!.toInt()
 
         val validation = mSharedViewModel.verifyDataFromUser(mTitle, mDescription)
         if(validation){
@@ -58,7 +64,7 @@ class AddFragment : Fragment() {
                 mTitle,
                 mSharedViewModel.parsePriority(mPriority),
                 mDescription,
-                0
+                ExeID
             )
             mToDoViewModel.insertData(newData)
             Toast.makeText(requireContext(), "Successfully added!", Toast.LENGTH_SHORT).show()

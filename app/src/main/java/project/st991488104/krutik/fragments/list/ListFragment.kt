@@ -1,29 +1,34 @@
 package project.st991488104.krutik.fragments.list
 
 import android.app.AlertDialog
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.*
-import androidx.appcompat.widget.SearchView
 import android.widget.Toast
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
-import androidx.recyclerview.widget.*
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.google.android.material.snackbar.Snackbar
+import jp.wasabeef.recyclerview.animators.SlideInUpAnimator
 import project.st991488104.krutik.R
 import project.st991488104.krutik.data.models.ToDoData
 import project.st991488104.krutik.data.viewmodel.ToDoViewModel
 import project.st991488104.krutik.databinding.FragmentListBinding
+import project.st991488104.krutik.fragments.PreferenceProvider
 import project.st991488104.krutik.fragments.SharedViewModel
 import project.st991488104.krutik.fragments.list.adapter.ListAdapter
 import project.st991488104.krutik.utils.hideKeyboard
-import com.google.android.material.snackbar.Snackbar
-import jp.wasabeef.recyclerview.animators.SlideInUpAnimator
 
 class ListFragment : Fragment(), SearchView.OnQueryTextListener {
-
-   // private val args by navArgs<ListFragmentArgs>()
-
+    lateinit var preferenceProvider: PreferenceProvider
+    var exeID = 0
+    private val args by navArgs<ListFragmentArgs>()
     private val mToDoViewModel: ToDoViewModel by viewModels()
     private val mSharedViewModel: SharedViewModel by viewModels()
 
@@ -43,15 +48,14 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
 
 
         // Setup RecyclerView
-
         setupRecyclerview()
 
-        // Observe LiveData
-//        mToDoViewModel.getAllData(args.selectItem.exerciseId).observe(viewLifecycleOwner, Observer { data ->
-//            mSharedViewModel.checkIfDatabaseEmpty(data)
-//            adapter.setData(data)
-//        })
-        mToDoViewModel.getAllData(1).observe(viewLifecycleOwner, Observer { data ->
+        //getting data from shared preference - ExerciseListAdapter
+        preferenceProvider = PreferenceProvider(container!!.context)
+        exeID = preferenceProvider.getString("ExerciseID","")!!.toInt()
+
+        //passing exercise to adapter to display all the items from the database
+        mToDoViewModel.getAllData(exeID).observe(viewLifecycleOwner, Observer { data ->
             mSharedViewModel.checkIfDatabaseEmpty(data)
             adapter.setData(data)
         })
@@ -114,8 +118,8 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.menu_delete_all -> confirmRemoval()
-            R.id.menu_priority_high -> mToDoViewModel.sortByHighPriority.observe(this, Observer { adapter.setData(it) })
-            R.id.menu_priority_low -> mToDoViewModel.sortByLowPriority.observe(this, Observer { adapter.setData(it) })
+            R.id.menu_priority_high -> mToDoViewModel.sortByHighPriority(exeID).observe(this, Observer { adapter.setData(it) })
+            R.id.menu_priority_low -> mToDoViewModel.sortByLowPriority(exeID).observe(this, Observer { adapter.setData(it) })
         }
         return super.onOptionsItemSelected(item)
     }
@@ -137,7 +141,7 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
     private fun searchThroughDatabase(query: String) {
         val searchQuery = "%$query%"
 
-        mToDoViewModel.searchDatabase(searchQuery).observe(this, Observer { list ->
+        mToDoViewModel.searchDatabase(searchQuery,exeID).observe(this, Observer { list ->
             list?.let {
                 adapter.setData(it)
             }

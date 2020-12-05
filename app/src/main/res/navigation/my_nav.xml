@@ -29,7 +29,7 @@
     <fragment
         android:id="@+id/listFragment"
         android:name="project.st991488104.krutik.fragments.list.ListFragment"
-        android:label="Exercise List"
+        android:label="Task List"
         tools:layout="@layout/fragment_list" >
         <action
             android:id="@+id/action_listFragment_to_addFragment"
@@ -45,7 +45,10 @@
             app:exitAnim="@anim/to_right"
             app:popEnterAnim="@anim/from_right"
             app:popExitAnim="@anim/to_left" />
-<!--        <argument-->
+        <argument
+            android:name="selectItem"
+            app:argType="project.st991488104.krutik.data.models.ExerciseData" />
+        <!--        <argument-->
 <!--            android:name="selectItem"-->
 <!--            app:argType="project.st991488104.krutik.data.models.ExerciseData" />-->
 
@@ -53,7 +56,7 @@
     <fragment
         android:id="@+id/addFragment"
         android:name="project.st991488104.krutik.fragments.add.AddFragment"
-        android:label="Add"
+        android:label="Add Task"
         tools:layout="@layout/fragment_add" >
         <action
             android:id="@+id/action_addFragment_to_listFragment"
@@ -81,7 +84,7 @@
     <fragment
         android:id="@+id/updateFragment"
         android:name="project.st991488104.krutik.fragments.update.UpdateFragment"
-        android:label="Update"
+        android:label="Update Task"
         tools:layout="@layout/fragment_update" >
         <action
             android:id="@+id/action_updateFragment_to_listFragment"

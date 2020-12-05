@@ -7,9 +7,6 @@ import project.st991488104.krutik.data.models.ToDoData
 
 class ToDoRepository(private val toDoDao: ToDoDao) {
 
-    val sortByHighPriority: LiveData<List<ToDoData>> = toDoDao.sortByHighPriority()
-    val sortByLowPriority: LiveData<List<ToDoData>> = toDoDao.sortByLowPriority()
-
     fun getAllData(exerciseId: Int): LiveData<List<ToDoData>> {
         return toDoDao.getAllData(exerciseId)
     }
@@ -30,8 +27,16 @@ class ToDoRepository(private val toDoDao: ToDoDao) {
         toDoDao.deleteAll()
     }
 
-    fun searchDatabase(searchQuery: String): LiveData<List<ToDoData>> {
-        return toDoDao.searchDatabase(searchQuery)
+    fun searchDatabase(searchQuery: String, exerciseId: Int): LiveData<List<ToDoData>> {
+        return toDoDao.searchDatabase(searchQuery,exerciseId)
+    }
+
+    fun sortByHighPriority(exerciseId: Int): LiveData<List<ToDoData>> {
+        return toDoDao.sortByHighPriority(exerciseId)
+    }
+
+    fun sortByLowPriority(exerciseId: Int): LiveData<List<ToDoData>> {
+        return toDoDao.sortByLowPriority(exerciseId)
     }
 
 }

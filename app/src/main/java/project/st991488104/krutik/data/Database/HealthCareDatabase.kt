@@ -11,7 +11,7 @@ import project.st991488104.krutik.data.Dao.ToDoDao
 import project.st991488104.krutik.data.models.ExerciseData
 import project.st991488104.krutik.data.models.ToDoData
 
-@Database(entities = [ToDoData::class, ExerciseData::class], version = 2, exportSchema = false)
+@Database(entities = [ToDoData::class, ExerciseData::class], version = 3, exportSchema = false)
 @TypeConverters(Converter::class)
 abstract class HealthCareDatabase : RoomDatabase() {
 
@@ -37,6 +37,7 @@ abstract class HealthCareDatabase : RoomDatabase() {
                 context.applicationContext,
                 HealthCareDatabase::class.java, "healthcare_database"
             )
+                .fallbackToDestructiveMigration()
                 .build()
     }
 
