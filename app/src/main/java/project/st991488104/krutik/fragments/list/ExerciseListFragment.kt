@@ -1,7 +1,10 @@
 package project.st991488104.krutik.fragments.list
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.*
+import android.widget.Toast
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
@@ -13,6 +16,7 @@ import project.st991488104.krutik.fragments.list.adapter.ExerciseListAdapter
 import project.st991488104.krutik.utils.hideKeyboard
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
+import project.st991488104.krutik.R
 
 
 class ExerciseListFragment : Fragment() {
@@ -43,6 +47,8 @@ class ExerciseListFragment : Fragment() {
             adapter.setData(data)
         })
 
+        setHasOptionsMenu(true)
+
         hideKeyboard(requireActivity())
 
         return binding.root
@@ -55,11 +61,34 @@ class ExerciseListFragment : Fragment() {
         recyclerView.itemAnimator = SlideInUpAnimator().apply {
             addDuration = 300
         }
-        deleteItem(recyclerView)
     }
 
-    private fun deleteItem(recyclerView: RecyclerView) {
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.delete_exercise_fragment_menu, menu)
 
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.menu_delete_all -> confirmRemoval()
+             }
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun confirmRemoval() {
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setPositiveButton("Yes") { _, _ ->
+            mExerciseViewModel.deleteAll()
+            Toast.makeText(
+                requireContext(),
+                "Successfully Removed Everything!",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+        builder.setNegativeButton("No") { _, _ -> }
+        builder.setTitle("Delete everything?")
+        builder.setMessage("Are you sure you want to remove everything?")
+        builder.create().show()
     }
 
     override fun onDestroyView() {
