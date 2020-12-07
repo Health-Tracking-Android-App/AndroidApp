@@ -12,6 +12,7 @@ import project.st991488104.krutik.R
 import project.st991488104.krutik.data.models.ExerciseData
 import project.st991488104.krutik.data.viewmodel.ExerciseViewModel
 import project.st991488104.krutik.fragments.SharedViewModel
+import java.util.*
 
 class ExerciseAddFragment : Fragment() {
 
@@ -48,7 +49,8 @@ class ExerciseAddFragment : Fragment() {
             // Insert Data to Database
             val newData = ExerciseData(
                 0,
-                mTitle
+                mTitle,
+                Calendar.getInstance().time
             )
             mExeViewModel.insertData(newData)
             Toast.makeText(requireContext(), "Successfully added!", Toast.LENGTH_SHORT).show()

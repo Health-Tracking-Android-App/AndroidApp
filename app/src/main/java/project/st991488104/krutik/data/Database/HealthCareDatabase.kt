@@ -5,13 +5,13 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import project.st991488104.krutik.data.Converter
+import project.st991488104.krutik.data.Converters.Converter
 import project.st991488104.krutik.data.Dao.ExerciseDao
 import project.st991488104.krutik.data.Dao.ToDoDao
 import project.st991488104.krutik.data.models.ExerciseData
 import project.st991488104.krutik.data.models.ToDoData
 
-@Database(entities = [ToDoData::class, ExerciseData::class], version = 3, exportSchema = false)
+@Database(entities = [ToDoData::class, ExerciseData::class], version = 4, exportSchema = false)
 @TypeConverters(Converter::class)
 abstract class HealthCareDatabase : RoomDatabase() {
 

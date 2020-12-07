@@ -2,20 +2,17 @@ package project.st991488104.krutik.fragments.list
 
 import android.os.Bundle
 import android.view.*
-import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import jp.wasabeef.recyclerview.animators.SlideInUpAnimator
-import kotlinx.android.synthetic.main.fragment_exercise_list.view.*
-import project.st991488104.krutik.R
 import project.st991488104.krutik.data.viewmodel.ExerciseViewModel
 import project.st991488104.krutik.databinding.FragmentExerciseListBinding
 import project.st991488104.krutik.fragments.SharedViewModel
 import project.st991488104.krutik.fragments.list.adapter.ExerciseListAdapter
 import project.st991488104.krutik.utils.hideKeyboard
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.RecyclerView
 
 
 class ExerciseListFragment : Fragment() {
@@ -26,7 +23,7 @@ class ExerciseListFragment : Fragment() {
     private var _binding: FragmentExerciseListBinding? = null
     private val binding get() = _binding!!
 
-    private val adapter: ExerciseListAdapter by lazy { ExerciseListAdapter() }
+    private val adapter: ExerciseListAdapter by lazy { ExerciseListAdapter(mExerciseViewModel) }
 
 
     override fun onCreateView(
@@ -40,7 +37,6 @@ class ExerciseListFragment : Fragment() {
 
         // Setup RecyclerView
         setupRecyclerview()
-
         // Observe LiveData
         mExerciseViewModel.getAllData.observe(viewLifecycleOwner, Observer { data ->
             mSharedViewModel.checkIfExerciseDatabaseEmpty(data)
@@ -59,7 +55,13 @@ class ExerciseListFragment : Fragment() {
         recyclerView.itemAnimator = SlideInUpAnimator().apply {
             addDuration = 300
         }
+        deleteItem(recyclerView)
     }
+
+    private fun deleteItem(recyclerView: RecyclerView) {
+
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
