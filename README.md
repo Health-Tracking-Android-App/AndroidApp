@@ -14,3 +14,4 @@ Technologies used
 - Data binding will be used to make code readable and easier to maintain
 - Recycler view and Card view will be used to list the fragments.
 - Fragments will be used more instead of activity to make it light weight and to reusable.
+- This is a test
