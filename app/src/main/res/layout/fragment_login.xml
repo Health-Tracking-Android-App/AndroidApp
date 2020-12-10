@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.login.LoginFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#A669FB"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextPassword"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPassword">
+
+        <EditText
+            android:id="@+id/editTextEmail"
+            android:layout_width="290dp"
+            android:layout_height="86dp"
+            android:layout_marginStart="57dp"
+            android:layout_marginEnd="57dp"
+            android:layout_marginBottom="25dp"
+            android:ems="10"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            app:layout_constraintBottom_toTopOf="@+id/editTextPassword"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+        <EditText
+            android:id="@+id/editTextPassword"
+            android:layout_width="305dp"
+            android:layout_height="94dp"
+            android:layout_marginStart="55dp"
+            android:layout_marginEnd="55dp"
+            android:layout_marginBottom="94dp"
+            android:ems="10"
+            android:hint="Password"
+            android:inputType="textPassword"
+            app:layout_constraintBottom_toTopOf="@+id/btnLogin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextEmail" />
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="237dp"
+            android:layout_height="38dp"
+            android:layout_marginBottom="37dp"
+            android:background="#E6E6E6"
+            android:fontFamily="sans-serif"
+            android:text="Login"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/btnRegister"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
+
+        <Button
+            android:id="@+id/btnRegister"
+            android:layout_width="239dp"
+            android:layout_height="44dp"
+            android:layout_marginBottom="125dp"
+            android:background="#2BEFC1"
+            android:text="Register"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="81dp"
+            android:layout_marginBottom="60dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="Exercise Planner"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toTopOf="@+id/editTextEmail"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>
+</layout>

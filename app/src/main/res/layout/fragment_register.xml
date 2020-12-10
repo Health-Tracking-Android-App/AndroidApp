@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.register.RegisterFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#2BEFC1">
+
+        <EditText
+            android:id="@+id/editEmail"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="69dp"
+            android:layout_marginEnd="69dp"
+            android:layout_marginBottom="23dp"
+            android:ems="10"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:textColor="#FFFFFF"
+            app:layout_constraintBottom_toTopOf="@+id/editPassword"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <EditText
+            android:id="@+id/editPassword"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="30dp"
+            android:ems="10"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:textColor="#FFFFFF"
+            app:layout_constraintBottom_toTopOf="@+id/editConfirmpass"
+            app:layout_constraintEnd_toEndOf="@+id/editConfirmpass"
+            app:layout_constraintStart_toStartOf="@+id/editConfirmpass"
+            app:layout_constraintTop_toBottomOf="@+id/editEmail" />
+
+        <EditText
+            android:id="@+id/editConfirmpass"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="69dp"
+            android:layout_marginEnd="69dp"
+            android:layout_marginBottom="45dp"
+            android:ems="10"
+            android:hint="Confirm Password"
+            android:inputType="textPassword"
+            android:textColor="#FFFFFF"
+            app:layout_constraintBottom_toTopOf="@+id/btnSignup"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editPassword" />
+
+        <Button
+            android:id="@+id/btnSignup"
+            android:layout_width="225dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="28dp"
+            android:text="Sign Up"
+            app:layout_constraintBottom_toTopOf="@+id/btnLogin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editConfirmpass" />
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="226dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="100dp"
+            android:background="#5502C8"
+            android:text="Login Page"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnSignup" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="76dp"
+            android:layout_marginBottom="40dp"
+            android:shadowColor="#FFFFFF"
+            android:text="Register"
+            android:textColor="#FFFFFF"
+            android:textSize="36sp"
+            app:layout_constraintBottom_toTopOf="@+id/editEmail"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>
+</layout>
