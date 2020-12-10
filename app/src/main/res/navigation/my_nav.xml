@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/my_nav"
-    app:startDestination="@id/exerciseListFragment">
+    app:startDestination="@id/loginFragment">
 
     <fragment
         android:id="@+id/exerciseListFragment"
@@ -96,6 +96,28 @@
         <argument
             android:name="currentItem"
             app:argType="project.st991488104.krutik.data.models.ToDoData" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="project.st991488104.krutik.fragments.login.LoginFragment"
+        android:label="LoginFragment" >
+        <action
+            android:id="@+id/action_loginFragment_to_exerciseListFragment"
+            app:destination="@id/exerciseListFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="project.st991488104.krutik.fragments.register.RegisterFragment"
+        android:label="RegisterFragment" >
+        <action
+            android:id="@+id/action_registerFragment_to_exerciseListFragment"
+            app:destination="@id/exerciseListFragment" />
+        <action
+            android:id="@+id/action_registerFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
 
 
