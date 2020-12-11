@@ -64,6 +64,19 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             />
+        <TextView
+            android:id="@+id/getTask"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="krutik"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="5dp"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

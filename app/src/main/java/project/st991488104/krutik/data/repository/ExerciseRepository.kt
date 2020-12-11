@@ -3,6 +3,7 @@ package project.st991488104.krutik.data.repository
 import androidx.lifecycle.LiveData
 import project.st991488104.krutik.data.Dao.ExerciseDao
 import project.st991488104.krutik.data.models.ExerciseData
+import project.st991488104.krutik.data.models.ToDoData
 
 class ExerciseRepository(private val exerciseDao: ExerciseDao) {
 
@@ -22,6 +23,10 @@ class ExerciseRepository(private val exerciseDao: ExerciseDao) {
 
     suspend fun deleteAll(){
         exerciseDao.deleteAll()
+    }
+
+    fun getTask(exerciseId: Int): LiveData<Int> {
+        return exerciseDao.getTask(exerciseId)
     }
 
 }
