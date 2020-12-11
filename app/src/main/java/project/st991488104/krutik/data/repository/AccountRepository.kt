@@ -3,6 +3,7 @@ package project.st991488104.krutik.data.repository
 import androidx.lifecycle.LiveData
 import project.st991488104.krutik.data.Dao.AccountDao
 import project.st991488104.krutik.data.models.AccountData
+import project.st991488104.krutik.data.models.ToDoData
 
 class AccountRepository(private val accountDao: AccountDao)  {
 
@@ -20,9 +21,13 @@ class AccountRepository(private val accountDao: AccountDao)  {
         accountDao.deleteItem(accountData)
     }
 
-     fun loadAccount(accountEmail:String,accountPass:String) :Int {
-       return accountDao.loadAccount(accountEmail,accountPass)
+    fun loadAccount(accountEmail:String,accountPass:String): LiveData<AccountData> {
+        return accountDao.loadAccount(accountEmail,accountPass)
     }
+
+//     fun loadAccount(accountEmail:String,accountPass:String) :Int {
+//       return accountDao.loadAccount(accountEmail,accountPass)
+//    }
 
 
 

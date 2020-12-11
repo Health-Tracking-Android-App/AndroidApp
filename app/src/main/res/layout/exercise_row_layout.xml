@@ -54,7 +54,7 @@
             android:id="@+id/dateCreated"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{exerciseData.date.toString()}"
+            android:text="@{`Created at `+exerciseData.date.toString()}"
             android:layout_marginStart="10dp"
             android:layout_marginBottom="5dp"
             android:textSize="14sp"

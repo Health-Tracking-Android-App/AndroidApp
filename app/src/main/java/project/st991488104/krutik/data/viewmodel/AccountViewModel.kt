@@ -34,13 +34,10 @@ class AccountViewModel (application: Application) : AndroidViewModel(application
         }
     }
 
-       fun loadEmail(accountEmail:String, accountPass:String) : Int = runBlocking {
-
-                repository.loadAccount(accountEmail, accountPass)
-            }
-
-
-        }
+    fun loadEmail(accountEmail:String, accountPass:String) : LiveData<AccountData>{
+        return repository.loadAccount(accountEmail, accountPass)
+    }
+}
 
 
 

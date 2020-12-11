@@ -15,6 +15,7 @@ import kotlinx.android.synthetic.main.fragment_register.*
 import project.st991488104.krutik.R
 import project.st991488104.krutik.data.viewmodel.AccountViewModel
 import project.st991488104.krutik.databinding.FragmentLoginBinding
+import androidx.lifecycle.Observer
 
 
 class LoginFragment : Fragment() {
@@ -32,12 +33,15 @@ class LoginFragment : Fragment() {
         binding.btnLogin.setOnClickListener{ view: View? ->
 
             val email = editTextEmail.text.toString()
-            val password = editTextPassword.toString()
+            val password = editTextPassword.text.toString()
 
-            if(mAccViewModel.loadEmail(email,password) ==1)
-            {
-                Toast.makeText(requireContext(), "This account exists", Toast.LENGTH_LONG).show()
-            }
+            mAccViewModel.loadEmail(email,password).observe(viewLifecycleOwner, Observer {
+                Log.e("Data",it.toString())
+            })
+//            if(mAccViewModel.loadEmail(email,password) ==1)
+//            {
+//                Toast.makeText(requireContext(), "This account exists", Toast.LENGTH_LONG).show()
+//            }
 
 
 

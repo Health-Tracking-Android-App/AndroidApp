@@ -24,8 +24,8 @@ interface AccountDao {
     suspend fun deleteItem(accountData: AccountData)
 
 
-    @Query("SELECT COUNT(*) FROM account_table WHERE email LIKE :email AND password LIKE :password")
-    fun loadAccount(email: String, password: String): Int
+    @Query("SELECT * FROM account_table WHERE email LIKE :email AND password LIKE :password")
+    fun loadAccount(email: String, password: String): LiveData<AccountData>
 
 
 }
