@@ -12,7 +12,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#2BEFC1">
+        android:background="@drawable/ic_consistence_background">
 
         <EditText
             android:id="@+id/editEmail"
@@ -76,7 +76,7 @@
             android:layout_width="226dp"
             android:layout_height="0dp"
             android:layout_marginBottom="100dp"
-            android:background="#5502C8"
+            android:background="@color/colorPrimaryDark"
             android:text="Login Page"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
