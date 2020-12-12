@@ -19,6 +19,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.ui.NavigationUI
 import androidx.recyclerview.widget.RecyclerView
 import project.st991488104.krutik.R
+import project.st991488104.krutik.fragments.PreferenceProvider
 
 
 class ExerciseListFragment : Fragment() {
@@ -31,6 +32,7 @@ class ExerciseListFragment : Fragment() {
 
     private val adapter: ExerciseListAdapter by lazy { ExerciseListAdapter(mExerciseViewModel) }
 
+    lateinit var preferenceProvider: PreferenceProvider
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,8 +46,15 @@ class ExerciseListFragment : Fragment() {
 
         // Setup RecyclerView
         setupRecyclerview()
+
+        //getting data from shared preference - ExerciseListAdapter
+        preferenceProvider = PreferenceProvider(requireActivity().applicationContext)
+        var  accID = preferenceProvider.getString("LoginID","")!!.toInt()
+
+
+
         // Observe LiveData
-        mExerciseViewModel.getAllData.observe(viewLifecycleOwner, Observer { data ->
+        mExerciseViewModel.getAllDataID(accID).observe(viewLifecycleOwner, Observer { data ->
             mSharedViewModel.checkIfExerciseDatabaseEmpty(data)
             adapter.setData(data)
         })

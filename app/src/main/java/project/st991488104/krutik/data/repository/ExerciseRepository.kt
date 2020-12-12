@@ -24,4 +24,8 @@ class ExerciseRepository(private val exerciseDao: ExerciseDao) {
         exerciseDao.deleteAll()
     }
 
+    fun getAllDataID(accountid: Int): LiveData<List<ExerciseData>> {
+       return exerciseDao.getAllDataByID(accountid)
+    }
+
 }
