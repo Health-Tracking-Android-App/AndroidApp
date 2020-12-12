@@ -13,6 +13,7 @@
         android:id="@+id/exListLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#0F4793"
         tools:context=".fragments.list.ExerciseListFragment">
 
         <androidx.recyclerview.widget.RecyclerView
@@ -45,13 +46,15 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:emptyDatabase="@{mSharedViewModel.emptyExerciseDatabase}"
-            android:src="@drawable/ic_no_data"
+            android:src="@drawable/muscle"
             android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="@+id/exRecyclerView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/exRecyclerView"
             app:layout_constraintTop_toTopOf="@+id/exRecyclerView"
-            app:layout_constraintVertical_bias="0.37" />
+            app:layout_constraintVertical_bias="0.37"
+            app:srcCompat="@drawable/muscle"
+            tools:visibility="invisible" />
 
         <TextView
             android:id="@+id/no_data_textView"
@@ -60,7 +63,8 @@
             android:layout_marginTop="12dp"
             android:alpha="0.5"
             android:emptyDatabase="@{mSharedViewModel.emptyExerciseDatabase}"
-            android:text="@string/no_data"
+            android:text="@string/no_exercise"
+            android:textColor="#FFFFFF"
             android:textSize="16sp"
             android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"

@@ -34,8 +34,16 @@ class AccountViewModel (application: Application) : AndroidViewModel(application
         }
     }
 
-    fun loadEmail(accountEmail:String, accountPass:String) : LiveData<AccountData>{
+//    fun loadEmail(accountEmail:String, accountPass:String) : LiveData<AccountData>{
+//        return repository.loadAccount(accountEmail, accountPass)
+//    }
+
+        fun loadEmail(accountEmail:String, accountPass:String) : LiveData<Int>{
         return repository.loadAccount(accountEmail, accountPass)
+    }
+
+        fun checkEmail(accountEmail:String) : LiveData<Int>{
+        return repository.checkAccount(accountEmail)
     }
 }
 

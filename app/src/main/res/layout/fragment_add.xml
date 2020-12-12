@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/lightGray"
     android:padding="24dp"
     tools:context=".fragments.add.AddFragment">
 
@@ -18,6 +19,8 @@
         android:inputType="textPersonName"
         android:paddingStart="24dp"
         android:paddingEnd="24dp"
+        android:shadowColor="#FFFFFF"
+        android:textColorHint="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -50,6 +53,7 @@
         android:paddingStart="24dp"
         android:paddingTop="16dp"
         android:paddingEnd="24dp"
+        android:textColorHint="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

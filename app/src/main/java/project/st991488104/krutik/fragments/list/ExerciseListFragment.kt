@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.*
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
@@ -15,6 +16,7 @@ import project.st991488104.krutik.fragments.SharedViewModel
 import project.st991488104.krutik.fragments.list.adapter.ExerciseListAdapter
 import project.st991488104.krutik.utils.hideKeyboard
 import androidx.lifecycle.Observer
+import androidx.navigation.ui.NavigationUI
 import androidx.recyclerview.widget.RecyclerView
 import project.st991488104.krutik.R
 
@@ -34,6 +36,7 @@ class ExerciseListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         // Data binding
         _binding = FragmentExerciseListBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this

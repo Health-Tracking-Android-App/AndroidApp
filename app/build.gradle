@@ -42,6 +42,7 @@ android {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
     implementation 'androidx.core:core-ktx:1.3.2'
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
@@ -53,7 +54,7 @@ dependencies {
     // Navigation Component
     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.1'
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.1'
-
+    implementation "androidx.appcompat:appcompat:$supportlibVersion"
     // Room components
     implementation "androidx.room:room-runtime:2.2.5"
     kapt "androidx.room:room-compiler:2.2.5"
@@ -76,5 +77,9 @@ dependencies {
 
     // RecyclerView Animator
     implementation 'jp.wasabeef:recyclerview-animators:3.0.0'
+
+
+
+
 
 }
