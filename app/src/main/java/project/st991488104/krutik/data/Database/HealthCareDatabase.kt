@@ -13,7 +13,7 @@ import project.st991488104.krutik.data.models.AccountData
 import project.st991488104.krutik.data.models.ExerciseData
 import project.st991488104.krutik.data.models.ToDoData
 
-@Database(entities = [ToDoData::class, ExerciseData::class, AccountData::class], version = 4, exportSchema = false)
+@Database(entities = [ToDoData::class, ExerciseData::class, AccountData::class], version = 5, exportSchema = false)
 @TypeConverters(Converter::class)
 abstract class HealthCareDatabase : RoomDatabase() {
 

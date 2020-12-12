@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.*
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
@@ -15,8 +16,10 @@ import project.st991488104.krutik.fragments.SharedViewModel
 import project.st991488104.krutik.fragments.list.adapter.ExerciseListAdapter
 import project.st991488104.krutik.utils.hideKeyboard
 import androidx.lifecycle.Observer
+import androidx.navigation.ui.NavigationUI
 import androidx.recyclerview.widget.RecyclerView
 import project.st991488104.krutik.R
+import project.st991488104.krutik.fragments.PreferenceProvider
 
 
 class ExerciseListFragment : Fragment() {
@@ -29,11 +32,13 @@ class ExerciseListFragment : Fragment() {
 
     private val adapter: ExerciseListAdapter by lazy { ExerciseListAdapter(mExerciseViewModel) }
 
+    lateinit var preferenceProvider: PreferenceProvider
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         // Data binding
         _binding = FragmentExerciseListBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
@@ -41,8 +46,15 @@ class ExerciseListFragment : Fragment() {
 
         // Setup RecyclerView
         setupRecyclerview()
+
+        //getting data from shared preference - ExerciseListAdapter
+        preferenceProvider = PreferenceProvider(requireActivity().applicationContext)
+        var  accID = preferenceProvider.getString("LoginID","")!!.toInt()
+
+
+
         // Observe LiveData
-        mExerciseViewModel.getAllData.observe(viewLifecycleOwner, Observer { data ->
+        mExerciseViewModel.getAllDataID(accID).observe(viewLifecycleOwner, Observer { data ->
             mSharedViewModel.checkIfExerciseDatabaseEmpty(data)
             adapter.setData(data)
         })

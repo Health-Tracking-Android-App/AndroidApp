@@ -24,6 +24,9 @@
             app:exitAnim="@anim/to_left"
             app:popEnterAnim="@anim/from_left"
             app:popExitAnim="@anim/to_right" />
+        <action
+            android:id="@+id/action_exerciseListFragment_to_aboutFragment"
+            app:destination="@id/aboutFragment" />
 
     </fragment>
     <fragment
@@ -100,24 +103,48 @@
     <fragment
         android:id="@+id/loginFragment"
         android:name="project.st991488104.krutik.fragments.login.LoginFragment"
-        android:label="LoginFragment" >
+        android:label="Login" >
         <action
             android:id="@+id/action_loginFragment_to_exerciseListFragment"
-            app:destination="@id/exerciseListFragment" />
+            app:destination="@id/exerciseListFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right"/>
         <action
             android:id="@+id/action_loginFragment_to_registerFragment"
-            app:destination="@id/registerFragment" />
+            app:destination="@id/registerFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right"/>
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
         android:name="project.st991488104.krutik.fragments.register.RegisterFragment"
-        android:label="RegisterFragment" >
+        android:label="Register" >
         <action
             android:id="@+id/action_registerFragment_to_exerciseListFragment"
-            app:destination="@id/exerciseListFragment" />
+            app:destination="@id/exerciseListFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right"/>
         <action
             android:id="@+id/action_registerFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
+            app:destination="@id/loginFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="project.st991488104.krutik.AboutFragment"
+        android:label="About Us" >
+        <action
+            android:id="@+id/action_aboutFragment_to_exerciseListFragment"
+            app:destination="@id/exerciseListFragment" />
     </fragment>
 
 

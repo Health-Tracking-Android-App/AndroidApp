@@ -22,6 +22,10 @@ interface ExerciseDao {
     @Query("DELETE FROM exercise_table")
     suspend fun deleteAll()
 
+    @Query("SELECT * FROM exercise_table WHERE accountId LIKE :accountid ORDER BY exerciseId ASC")
+    fun getAllDataByID(accountid: Int): LiveData<List<ExerciseData>>
+
     @Query("SELECT COUNT(*) FROM todo_table WHERE exerciseId LIKE :exerciseId")
     fun getTask(exerciseId: Int): LiveData<Int>
+
 }

@@ -12,5 +12,4 @@ class PreferenceProvider(context: Context) {
     fun getString(key: String, toString: String): String?{
         return sharedPreferences.getString(key,null)
     }
-
 }

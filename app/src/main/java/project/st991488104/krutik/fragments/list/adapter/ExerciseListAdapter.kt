@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.PopupMenu
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
@@ -17,10 +16,8 @@ import project.st991488104.krutik.databinding.ExerciseRowLayoutBinding
 import project.st991488104.krutik.fragments.PreferenceProvider
 import project.st991488104.krutik.fragments.list.ExerciseListFragmentDirections
 import androidx.lifecycle.Observer
-import androidx.lifecycle.observe
 
-
-class ExerciseListAdapter(private val mExerciseViewModel: ExerciseViewModel) : RecyclerView.Adapter<ExerciseListAdapter.MyViewHolder>(){
+class ExerciseListAdapter(private val mExerciseViewModel: ExerciseViewModel) : RecyclerView.Adapter<ExerciseListAdapter.MyViewHolder>() {
 
     var dataList = emptyList<ExerciseData>()
     lateinit var preferenceProvider: PreferenceProvider
@@ -75,7 +72,6 @@ class ExerciseListAdapter(private val mExerciseViewModel: ExerciseViewModel) : R
         holder.itemView.appCompatImageView.setOnClickListener {
             mExerciseViewModel.deleteItem(dataList[position])
         }
-
         mExerciseViewModel.getTask(dataList[position].exerciseId).observe(holder.itemView.context as LifecycleOwner, Observer {
             Log.e("data",it.toString())
             holder.itemView.getTask.text = "Task - "+it.toString()
@@ -93,6 +89,4 @@ class ExerciseListAdapter(private val mExerciseViewModel: ExerciseViewModel) : R
         exerciseDiffUtilResult.dispatchUpdatesTo(this)
     }
 
-
 }
-

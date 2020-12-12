@@ -8,7 +8,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import project.st991488104.krutik.data.Database.HealthCareDatabase
 import project.st991488104.krutik.data.models.ExerciseData
-import project.st991488104.krutik.data.models.ToDoData
 import project.st991488104.krutik.data.repository.ExerciseRepository
 
 class ExerciseViewModel(application: Application) : AndroidViewModel(application) {
@@ -49,9 +48,12 @@ class ExerciseViewModel(application: Application) : AndroidViewModel(application
             repository.deleteAll()
         }
     }
+    fun getAllDataID(accountid: Int): LiveData<List<ExerciseData>>{
+        return repository.getAllDataID(accountid)
+
+    }
 
     fun getTask(exerciseId: Int): LiveData<Int>{
         return repository.getTask(exerciseId)
     }
-
 }

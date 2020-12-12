@@ -21,14 +21,17 @@ class AccountRepository(private val accountDao: AccountDao)  {
         accountDao.deleteItem(accountData)
     }
 
-    fun loadAccount(accountEmail:String,accountPass:String): LiveData<AccountData> {
-        return accountDao.loadAccount(accountEmail,accountPass)
+     fun loadAccount(accountEmail:String,accountPass:String) :LiveData<Int> {
+       return accountDao.loadAccount(accountEmail,accountPass)
     }
 
-//     fun loadAccount(accountEmail:String,accountPass:String) :Int {
-//       return accountDao.loadAccount(accountEmail,accountPass)
-//    }
+    fun checkAccount(accountEmail:String) :LiveData<Int> {
+        return accountDao.checkAccount(accountEmail)
+    }
 
+    fun existAccount(accountEmail:String) :LiveData<Int> {
+        return accountDao.existEmail(accountEmail)
+    }
 
 
 }
