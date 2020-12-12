@@ -53,4 +53,7 @@ class ExerciseViewModel(application: Application) : AndroidViewModel(application
 
     }
 
+    fun getTask(exerciseId: Int): LiveData<Int>{
+        return repository.getTask(exerciseId)
+    }
 }

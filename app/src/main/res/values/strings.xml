@@ -17,6 +17,8 @@
     <string name="save">Save</string>
     <string name="delete">Delete</string>
     <string name="about">This application allows the user to create their personal exercise schedule which include custom and exercises and tasks </string>
+    <string name="Krutik">Developer - Krutik Parikh</string>
+    <string name="Nath">Developer - Nathenial Kawal</string>
 
     <string-array name="priorities">
         <item>High Priority</item>

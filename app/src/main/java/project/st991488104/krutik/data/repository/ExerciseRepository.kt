@@ -28,4 +28,8 @@ class ExerciseRepository(private val exerciseDao: ExerciseDao) {
        return exerciseDao.getAllDataByID(accountid)
     }
 
+    fun getTask(exerciseId: Int): LiveData<Int> {
+        return exerciseDao.getTask(exerciseId)
+    }
+
 }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0F4793"
+    android:background="@drawable/ic_consistence_background"
     android:padding="24dp"
     tools:context=".fragments.add.ExerciseAddFragment">
 
@@ -15,7 +15,7 @@
         android:layout_height="97dp"
         android:layout_marginTop="136dp"
         android:layout_marginBottom="161dp"
-        android:background="@android:color/transparent"
+        android:background="?attr/colorControlHighlight"
         android:ems="10"
         android:hint="@string/exeName"
         android:inputType="textPersonName"
