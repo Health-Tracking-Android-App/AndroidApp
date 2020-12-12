@@ -2,12 +2,20 @@ package project.st991488104.krutik.data.models
 
 import android.os.Parcelable
 import androidx.room.Entity
+import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 import kotlinx.android.parcel.Parcelize
 import java.util.*
 
-@Entity(tableName = "exercise_table")
 @Parcelize
+
+@Entity(tableName = "exercise_table")
+//@Entity(tableName = "exercise_table",foreignKeys = [ForeignKey(entity = AccountData::class,
+//    parentColumns = arrayOf("accountId"),
+//    childColumns = arrayOf("exerciseId"),
+//    onDelete = ForeignKey.CASCADE)]
+//)
+
 data class ExerciseData(
     @PrimaryKey(autoGenerate = true)
     var exerciseId: Int,

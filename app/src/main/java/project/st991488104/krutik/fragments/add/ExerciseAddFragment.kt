@@ -7,7 +7,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.fragment_add.*
-import kotlinx.android.synthetic.main.fragment_add.view.*
 import project.st991488104.krutik.R
 import project.st991488104.krutik.data.models.ExerciseData
 import project.st991488104.krutik.data.viewmodel.ExerciseViewModel
@@ -23,6 +22,9 @@ class ExerciseAddFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+
+
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_exercise_add, container, false)
 
@@ -41,7 +43,8 @@ class ExerciseAddFragment : Fragment() {
         return super.onOptionsItemSelected(item)
     }
 
-    private fun insertDataToDb() {
+     private fun insertDataToDb() {
+
         val mTitle = title_et.text.toString()
 
         val validation = mSharedViewModel.verifyExerciseDataFromUser(mTitle)
@@ -53,7 +56,9 @@ class ExerciseAddFragment : Fragment() {
                 Calendar.getInstance().time
             )
             mExeViewModel.insertData(newData)
+
             Toast.makeText(requireContext(), "Successfully added!", Toast.LENGTH_SHORT).show()
+
             // Navigate Back
             findNavController().navigate(R.id.action_exerciseAddFragment_to_exerciseListFragment)
         }else{
