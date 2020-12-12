@@ -10,10 +10,13 @@ import kotlinx.android.synthetic.main.fragment_add.*
 import project.st991488104.krutik.R
 import project.st991488104.krutik.data.models.ExerciseData
 import project.st991488104.krutik.data.viewmodel.ExerciseViewModel
+import project.st991488104.krutik.fragments.PreferenceProvider
 import project.st991488104.krutik.fragments.SharedViewModel
 import java.util.*
 
 class ExerciseAddFragment : Fragment() {
+
+    lateinit var preferenceProvider: PreferenceProvider
 
     private val mSharedViewModel: SharedViewModel by viewModels()
     private val mExeViewModel: ExerciseViewModel by viewModels()
@@ -32,6 +35,7 @@ class ExerciseAddFragment : Fragment() {
 
         return view
     }
+
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.add_fragment_menu, menu)
     }
@@ -45,6 +49,13 @@ class ExerciseAddFragment : Fragment() {
 
      private fun insertDataToDb() {
 
+
+         //getting data from shared preference - ExerciseListAdapter
+         preferenceProvider = PreferenceProvider(requireActivity().applicationContext)
+          var  accID = preferenceProvider.getString("LoginID","")!!.toInt()
+
+
+
         val mTitle = title_et.text.toString()
 
         val validation = mSharedViewModel.verifyExerciseDataFromUser(mTitle)
@@ -53,7 +64,7 @@ class ExerciseAddFragment : Fragment() {
             val newData = ExerciseData(
                 0,
                 mTitle,
-                Calendar.getInstance().time
+                Calendar.getInstance().time,accID
             )
             mExeViewModel.insertData(newData)
 

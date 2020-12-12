@@ -9,16 +9,17 @@ import java.util.*
 
 @Parcelize
 
-@Entity(tableName = "exercise_table")
-//@Entity(tableName = "exercise_table",foreignKeys = [ForeignKey(entity = AccountData::class,
-//    parentColumns = arrayOf("accountId"),
-//    childColumns = arrayOf("exerciseId"),
-//    onDelete = ForeignKey.CASCADE)]
-//)
+//@Entity(tableName = "exercise_table")
+@Entity(tableName = "exercise_table",foreignKeys = [ForeignKey(entity = AccountData::class,
+    parentColumns = arrayOf("accountId"),
+    childColumns = arrayOf("accountId"),
+    onDelete = ForeignKey.CASCADE)]
+)
 
 data class ExerciseData(
     @PrimaryKey(autoGenerate = true)
     var exerciseId: Int,
     var name: String,
-    var date: Date
+    var date: Date,
+    var accountId: Int
 ): Parcelable

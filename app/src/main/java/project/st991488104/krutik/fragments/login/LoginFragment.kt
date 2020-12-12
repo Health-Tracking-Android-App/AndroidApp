@@ -16,11 +16,13 @@ import kotlinx.android.synthetic.main.fragment_login.*
 import project.st991488104.krutik.R
 import project.st991488104.krutik.data.viewmodel.AccountViewModel
 import project.st991488104.krutik.databinding.FragmentLoginBinding
+import project.st991488104.krutik.fragments.PreferenceProvider
 
 class LoginFragment : Fragment() {
 
     private val mAccViewModel: AccountViewModel by viewModels()
 
+    lateinit var preferenceProvider: PreferenceProvider
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -38,14 +40,26 @@ class LoginFragment : Fragment() {
             val password = editTextPassword.text.toString()
 
 
-            mAccViewModel.loadEmail(email, password).observe(viewLifecycleOwner, Observer {
-                Log.e("Data", it.toString())
-                if (it == 1) {
+            mAccViewModel.loadEmail(email, password).observe(viewLifecycleOwner, Observer { accountnum ->
+                Log.e("Data", accountnum.toString())
+                if (accountnum == 1) {
 
-                    view.findNavController()
-                        .navigate(R.id.action_loginFragment_to_exerciseListFragment)
+                    mAccViewModel.checkEmail(email).observe(viewLifecycleOwner, Observer {
 
-                    Toast.makeText(requireContext(), "Welcome", Toast.LENGTH_SHORT).show()
+                        preferenceProvider = PreferenceProvider(requireActivity().applicationContext)
+                        preferenceProvider.putString("LoginID",it.toString())
+
+                        view.findNavController()
+                            .navigate(R.id.action_loginFragment_to_exerciseListFragment)
+
+
+                        Toast.makeText(requireContext(), "Welcome", Toast.LENGTH_SHORT).show()
+
+                    })
+
+
+
+
 
                 } else if (email.isEmpty() || password.isEmpty()) {
                     Toast.makeText(requireContext(), "Fields are invalid", Toast.LENGTH_SHORT)
@@ -65,6 +79,9 @@ class LoginFragment : Fragment() {
         binding.btnRegister.setOnClickListener { view: View ->  //Navigate to Register
             view.findNavController()
                 .navigate(R.id.action_loginFragment_to_registerFragment)
+
+
+
         }
 
         return binding.root

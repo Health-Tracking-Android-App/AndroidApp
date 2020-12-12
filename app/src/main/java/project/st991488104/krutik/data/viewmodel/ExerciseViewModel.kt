@@ -48,5 +48,9 @@ class ExerciseViewModel(application: Application) : AndroidViewModel(application
             repository.deleteAll()
         }
     }
+    fun getAllDataID(accountid: Int): LiveData<List<ExerciseData>>{
+        return repository.getAllDataID(accountid)
+
+    }
 
 }
