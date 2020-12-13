@@ -78,14 +78,10 @@ class LoginFragment : Fragment() {
 
         }
 
-        (activity as MainActivity).setDrawer_Locked()
         return binding.root
 
 
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        (activity as MainActivity).setDrawer_Unlocked()
-    }
+
 }
