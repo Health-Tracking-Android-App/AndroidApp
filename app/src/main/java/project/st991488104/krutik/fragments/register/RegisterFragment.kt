@@ -1,5 +1,5 @@
 package project.st991488104.krutik.fragments.register
-
+//991435185 Nathaniel Kawal
 import android.accounts.Account
 import android.os.Bundle
 import android.util.Log
@@ -13,6 +13,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import kotlinx.android.synthetic.main.fragment_register.*
+import project.st991488104.krutik.MainActivity
 import project.st991488104.krutik.R
 import project.st991488104.krutik.data.models.AccountData
 import project.st991488104.krutik.data.viewmodel.AccountViewModel
@@ -29,7 +30,6 @@ class RegisterFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
 
         val binding: FragmentRegisterBinding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_register, container, false
@@ -51,7 +51,6 @@ class RegisterFragment : Fragment() {
 
 
             mAccViewModel.existEmail(email).observe(viewLifecycleOwner, Observer {
-                Log.e("Data", it.toString())
                 if (it == 1) {
                     Toast.makeText(requireContext(), "Account exists", Toast.LENGTH_SHORT).show()
                 } else if (password != confirmpass) {
@@ -64,9 +63,7 @@ class RegisterFragment : Fragment() {
                         '@'
                     )
                 ) {
-
                     Toast.makeText(requireContext(), "Invalid input", Toast.LENGTH_LONG).show()
-
                 } else {
 
                     // Initialize a new account
@@ -83,7 +80,6 @@ class RegisterFragment : Fragment() {
 
                     mAccViewModel.loadEmail(email, password)
                         .observe(viewLifecycleOwner, Observer { accountnum ->
-                            Log.e("Data", accountnum.toString())
                             if (accountnum == 1) {
 
                                 mAccViewModel.checkEmail(email)
@@ -94,6 +90,10 @@ class RegisterFragment : Fragment() {
                                         preferenceProvider.putString("LoginID", it.toString())
 
 
+
+                                        view.findNavController()
+                                            .navigate(R.id.action_registerFragment_to_exerciseListFragment)
+
                                         Toast.makeText(
                                             requireContext(),
                                             "Welcome",
@@ -101,8 +101,6 @@ class RegisterFragment : Fragment() {
                                         )
                                             .show()
 
-                                        view.findNavController()
-                                            .navigate(R.id.action_registerFragment_to_exerciseListFragment)
 
                                     })
                             }
@@ -114,6 +112,13 @@ class RegisterFragment : Fragment() {
             }
             )
         }
+
+        (activity as MainActivity?)?.setDrawer_Locked()
         return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        (activity as MainActivity?)?.setDrawer_Unlocked()
     }
 }

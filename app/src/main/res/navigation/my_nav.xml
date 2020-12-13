@@ -140,7 +140,7 @@
     </fragment>
     <fragment
         android:id="@+id/aboutFragment"
-        android:name="project.st991488104.krutik.AboutFragment"
+        android:name="project.st991488104.krutik.fragments.about.AboutFragment"
         android:label="About Us" >
         <action
             android:id="@+id/action_aboutFragment_to_exerciseListFragment"

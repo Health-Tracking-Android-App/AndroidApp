@@ -1,8 +1,6 @@
 package project.st991488104.krutik.fragments.login
-
-import android.content.Context
+//991435185 Nathaniel Kawal
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import kotlinx.android.synthetic.main.fragment_login.*
+import project.st991488104.krutik.MainActivity
 import project.st991488104.krutik.R
 import project.st991488104.krutik.data.viewmodel.AccountViewModel
 import project.st991488104.krutik.databinding.FragmentLoginBinding
@@ -34,6 +33,7 @@ class LoginFragment : Fragment() {
         )
 
 
+
         binding.btnLogin.setOnClickListener { view: View ->
 
             val email = editTextEmail.text.toString()
@@ -41,7 +41,6 @@ class LoginFragment : Fragment() {
 
 
             mAccViewModel.loadEmail(email, password).observe(viewLifecycleOwner, Observer { accountnum ->
-                Log.e("Data", accountnum.toString())
                 if (accountnum == 1) {
 
                     mAccViewModel.checkEmail(email).observe(viewLifecycleOwner, Observer {
@@ -56,9 +55,6 @@ class LoginFragment : Fragment() {
                         Toast.makeText(requireContext(), "Welcome", Toast.LENGTH_SHORT).show()
 
                     })
-
-
-
 
 
                 } else if (email.isEmpty() || password.isEmpty()) {
@@ -80,12 +76,16 @@ class LoginFragment : Fragment() {
             view.findNavController()
                 .navigate(R.id.action_loginFragment_to_registerFragment)
 
-
-
         }
 
+        (activity as MainActivity).setDrawer_Locked()
         return binding.root
 
 
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        (activity as MainActivity).setDrawer_Unlocked()
     }
 }
