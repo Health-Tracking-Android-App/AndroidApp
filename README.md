@@ -9,9 +9,12 @@ Purpose of the App:
 Technologies used
 - App will be supported to all Android Devices including small to medium size phone
 - MVVM Architecture will be followed to build whole app consistently
-- Navigation will be used as Drawer, Up Back button, Option menu as well as Bottom menu.
+- Navigation will be used as well as Drawer and Up Back button
 - Room will be used for the Data storage and Authentication of user
-- Data binding will be used to make code readable and easier to maintain
+- Data binding will be used to make code persistence
 - Recycler view and Card view will be used to list the fragments.
-- Fragments will be used more instead of activity to make it light weight and to reusable.
-- This is a test
+- Corotines are used for Insert, Update and Delete and Live data is used to display the data into recycler view
+- Safe args and shared preference is used to pass data into one fragment to another
+
+## Demo of app
+### https://www.youtube.com/watch?v=PvRm24PnDfs
