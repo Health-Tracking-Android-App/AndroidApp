@@ -2,6 +2,7 @@ package project.st991488104.krutik.fragments
 //Krutik Parikh | 991488104
 
 import android.os.Build
+import android.util.Log
 import android.view.View
 import android.widget.Spinner
 import androidx.annotation.RequiresApi
@@ -88,7 +89,9 @@ class BindingAdapters {
         fun sendDataToUpdateFragment(view: ConstraintLayout, currentItem: ToDoData){
             view.setOnClickListener {
                 val action = ListFragmentDirections.actionListFragmentToUpdateFragment(currentItem)
+                Log.e("Args",currentItem.toString())
                 view.findNavController().navigate(action)
+                Log.e("action",action.toString())
             }
         }
 

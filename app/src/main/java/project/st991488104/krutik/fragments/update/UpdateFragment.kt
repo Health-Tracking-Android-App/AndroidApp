@@ -2,6 +2,7 @@ package project.st991488104.krutik.fragments.update
 
 import android.app.AlertDialog
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -17,7 +18,7 @@ import kotlinx.android.synthetic.main.fragment_update.*
 import project.st991488104.krutik.fragments.update.UpdateFragmentArgs
 
 class UpdateFragment : Fragment() {
-    class UpdateFragment : Fragment() {
+
 
         private val args by navArgs<UpdateFragmentArgs>()
 
@@ -61,6 +62,7 @@ class UpdateFragment : Fragment() {
             val description = current_description_et.text.toString()
             val getPriority = current_priorities_spinner.selectedItem.toString()
 
+            Log.e("Arg",args.currentItem.toString())
             val validation = mSharedViewModel.verifyDataFromUser(title, description)
             if (validation) {
                 // Update Current Item
@@ -103,5 +105,5 @@ class UpdateFragment : Fragment() {
             super.onDestroyView()
             _binding = null
         }
-    }
+
 }

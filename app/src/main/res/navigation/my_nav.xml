@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/my_nav"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@id/exerciseListFragment">
 
     <fragment
         android:id="@+id/exerciseListFragment"
@@ -43,8 +43,7 @@
             app:enterAnim="@anim/from_right"
             app:exitAnim="@anim/to_left"
             app:popEnterAnim="@anim/from_left"
-            app:popExitAnim="@anim/to_right"
-            app:popUpTo="@id/listFragment" />
+            app:popExitAnim="@anim/to_right" />
         <action
             android:id="@+id/action_listFragment_to_updateFragment"
             app:destination="@id/updateFragment"
@@ -52,7 +51,7 @@
             app:exitAnim="@anim/to_right"
             app:popEnterAnim="@anim/from_right"
             app:popExitAnim="@anim/to_left"
-            app:popUpTo="@id/listFragment" />
+             />
         <argument
             android:name="selectItem"
             app:argType="project.st991488104.krutik.data.models.ExerciseData" />
