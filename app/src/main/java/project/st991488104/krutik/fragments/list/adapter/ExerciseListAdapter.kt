@@ -35,8 +35,8 @@ class ExerciseListAdapter(private val mExerciseViewModel: ExerciseViewModel) : R
             fun from(parent: ViewGroup): MyViewHolder {
 
                 val layoutInflater = LayoutInflater.from(parent.context)
-
                 val binding = ExerciseRowLayoutBinding.inflate(layoutInflater, parent, false)
+
                 return MyViewHolder(
                     binding
                 )

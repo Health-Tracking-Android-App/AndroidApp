@@ -16,17 +16,20 @@
             app:enterAnim="@anim/from_right"
             app:exitAnim="@anim/to_left"
             app:popEnterAnim="@anim/from_left"
-            app:popExitAnim="@anim/to_right" />
+            app:popExitAnim="@anim/to_right"
+            app:popUpTo="@id/exerciseListFragment" />
         <action
             android:id="@+id/action_exerciseListFragment_to_exerciseAddFragment"
             app:destination="@id/exerciseAddFragment"
             app:enterAnim="@anim/from_right"
             app:exitAnim="@anim/to_left"
             app:popEnterAnim="@anim/from_left"
-            app:popExitAnim="@anim/to_right" />
+            app:popExitAnim="@anim/to_right"
+            app:popUpTo="@id/exerciseListFragment" />
         <action
             android:id="@+id/action_exerciseListFragment_to_aboutFragment"
-            app:destination="@id/aboutFragment" />
+            app:destination="@id/aboutFragment"
+            app:popUpTo="@id/exerciseListFragment" />
 
     </fragment>
     <fragment
@@ -40,14 +43,16 @@
             app:enterAnim="@anim/from_right"
             app:exitAnim="@anim/to_left"
             app:popEnterAnim="@anim/from_left"
-            app:popExitAnim="@anim/to_right" />
+            app:popExitAnim="@anim/to_right"
+            app:popUpTo="@id/listFragment" />
         <action
             android:id="@+id/action_listFragment_to_updateFragment"
             app:destination="@id/updateFragment"
             app:enterAnim="@anim/from_left"
             app:exitAnim="@anim/to_right"
             app:popEnterAnim="@anim/from_right"
-            app:popExitAnim="@anim/to_left" />
+            app:popExitAnim="@anim/to_left"
+            app:popUpTo="@id/listFragment" />
         <argument
             android:name="selectItem"
             app:argType="project.st991488104.krutik.data.models.ExerciseData" />
@@ -81,8 +86,8 @@
             app:enterAnim="@anim/from_left"
             app:exitAnim="@anim/to_right"
             app:launchSingleTop="false"
-            app:popUpTo="@id/listFragment"
-            app:popUpToInclusive="true"/>
+            app:popUpTo="@id/exerciseListFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/updateFragment"
@@ -110,14 +115,16 @@
             app:enterAnim="@anim/from_right"
             app:exitAnim="@anim/to_left"
             app:popEnterAnim="@anim/from_left"
-            app:popExitAnim="@anim/to_right"/>
+            app:popExitAnim="@anim/to_right"
+            app:popUpTo="@id/loginFragment" />
         <action
             android:id="@+id/action_loginFragment_to_registerFragment"
             app:destination="@id/registerFragment"
             app:enterAnim="@anim/from_right"
             app:exitAnim="@anim/to_left"
             app:popEnterAnim="@anim/from_left"
-            app:popExitAnim="@anim/to_right"/>
+            app:popExitAnim="@anim/to_right"
+            app:popUpTo="@id/loginFragment"/>
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
@@ -129,14 +136,16 @@
             app:enterAnim="@anim/from_right"
             app:exitAnim="@anim/to_left"
             app:popEnterAnim="@anim/from_left"
-            app:popExitAnim="@anim/to_right"/>
+            app:popExitAnim="@anim/to_right"
+            app:popUpTo="@id/loginFragment" />
         <action
             android:id="@+id/action_registerFragment_to_loginFragment"
             app:destination="@id/loginFragment"
-            app:enterAnim="@anim/from_right"
-            app:exitAnim="@anim/to_left"
-            app:popEnterAnim="@anim/from_left"
-            app:popExitAnim="@anim/to_right"/>
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right"
+            app:popEnterAnim="@anim/from_right"
+            app:popExitAnim="@anim/to_left"
+            app:popUpTo="@id/loginFragment"/>
     </fragment>
     <fragment
         android:id="@+id/aboutFragment"
@@ -144,7 +153,8 @@
         android:label="About Us" >
         <action
             android:id="@+id/action_aboutFragment_to_exerciseListFragment"
-            app:destination="@id/exerciseListFragment" />
+            app:destination="@id/exerciseListFragment"
+            app:popUpTo="@id/exerciseListFragment" />
     </fragment>
 
 
