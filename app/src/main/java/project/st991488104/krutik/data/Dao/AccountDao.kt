@@ -1,5 +1,5 @@
 package project.st991488104.krutik.data.Dao
-
+//991435185 Nathaniel Kawal
 import android.accounts.Account
 import androidx.lifecycle.LiveData
 import androidx.room.*
@@ -28,9 +28,6 @@ interface AccountDao {
 
     @Query("SELECT accountId FROM account_table WHERE email LIKE :email")
     fun checkAccount(email: String): LiveData<Int>
-
-
-
 
     @Query("SELECT COUNT(*) FROM account_table WHERE email LIKE :email")
     fun existEmail(email: String): LiveData<Int>

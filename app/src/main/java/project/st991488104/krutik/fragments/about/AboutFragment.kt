@@ -1,4 +1,4 @@
-package project.st991488104.krutik
+package project.st991488104.krutik.fragments.about
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
+import project.st991488104.krutik.R
 import project.st991488104.krutik.databinding.FragmentAboutBinding
 
 class AboutFragment : Fragment() {
@@ -15,7 +16,8 @@ class AboutFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? { // Inflate the layout for this fragment
         val binding : FragmentAboutBinding = DataBindingUtil.inflate(
-            inflater, R.layout.fragment_about, container, false)
+            inflater,
+            R.layout.fragment_about, container, false)
 
         // Add OnClick Handler for Try Again button
         binding.okButton.setOnClickListener{view: View->
