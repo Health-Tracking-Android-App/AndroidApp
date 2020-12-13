@@ -1,5 +1,6 @@
 package project.st991488104.krutik
-
+//Krutik Parikh | 991488104
+//991435185 Nathaniel Kawal
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil

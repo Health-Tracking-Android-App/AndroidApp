@@ -1,4 +1,5 @@
 package project.st991488104.krutik.data.models
+//991435185 Nathaniel Kawal
 
 import android.os.Parcelable
 import androidx.room.Entity
