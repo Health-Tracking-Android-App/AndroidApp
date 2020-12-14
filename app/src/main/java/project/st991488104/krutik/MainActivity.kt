@@ -9,9 +9,10 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupActionBarWithNavController
 import project.st991488104.krutik.databinding.ActivityMainBinding
+import project.st991488104.krutik.interfaces.DrawerController
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() , DrawerController {
 
     private lateinit var drawerLayout: DrawerLayout
 
@@ -20,6 +21,8 @@ class MainActivity : AppCompatActivity() {
 //        setContentView(R.layout.activity_main)
         val binding =
             DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
+
+        drawerLayout = binding.drawerLayout
 
         setupActionBarWithNavController(findNavController(R.id.navHostFragment))
 
@@ -31,8 +34,17 @@ class MainActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.navHostFragment)
 
-        return navController.navigateUp() || super.onSupportNavigateUp()
+        return navController.navigateUp() || super.onSupportNavigateUp() || NavigationUI.navigateUp(navController, drawerLayout)
 
 
+    }
+
+    override fun setDrawer_Locked() {
+       drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+
+    }
+
+    override fun setDrawer_Unlocked() {
+        drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
     }
 }
